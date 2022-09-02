@@ -101,9 +101,10 @@ jobs:
         id: deploy
         uses: google-github-actions/deploy-cloudrun@v0
         with:
+          working-directory: cloud-run-jvm
           service: ${{ env.SERVICE }}
           region: ${{ env.REGION }}
-          source: cloud-run-jvm
+          source: ./
 
       - name: Show Output
         run: echo ${{ steps.deploy.outputs.url }}
