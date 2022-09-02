@@ -94,6 +94,8 @@ jobs:
 
       - name: Run debug output after mvn package
         run: ls -ltra
+      - name: tree mvn ./target
+        run: tree ./target
             
       - name: Deploy to Cloud Run
         id: deploy
