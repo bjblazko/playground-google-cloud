@@ -72,6 +72,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Run debug output
+        run: echo Look here! $HOME $MY_FOO_BAR
+        env:
+          MY_FOO_BAR: ${{ secrets.GCP_CREDENTIALS }}
+    
       - name: Google Auth
         id: auth
         uses: 'google-github-actions/auth@v0'
@@ -84,7 +89,7 @@ jobs:
         with:
           service: ${{ env.SERVICE }}
           region: ${{ env.REGION }}
-          source: ./
+          source: ./cloud-run-jvm
 
       - name: Show Output
         run: echo ${{ steps.deploy.outputs.url }}
