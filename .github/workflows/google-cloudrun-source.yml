@@ -74,6 +74,10 @@ jobs:
           distribution: 'adopt'
       - name: Build with Maven
         run: mvn --batch-mode --update-snapshots package
+        uses: actions/upload-artifact@master
+        with:
+          name: artifact
+          path: ./
 
   deploy:
     needs: build
@@ -98,6 +102,13 @@ jobs:
         with:
           credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
 
+      - name: Get Maven artifacts
+        id: get-maven
+        uses: actions/download-artifact@master
+        with:
+          name: artifact
+          path: ./
+            
       - name: Deploy to Cloud Run
         id: deploy
         uses: google-github-actions/deploy-cloudrun@v0
