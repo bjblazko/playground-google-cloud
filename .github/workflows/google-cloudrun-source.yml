@@ -46,7 +46,7 @@
 
 name: Deploy to Cloud Run from Source
 
-defaults:
+#defaults:
 #  run:
 #    working-directory: cloud-run-jvm
     
