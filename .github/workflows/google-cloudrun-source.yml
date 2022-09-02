@@ -89,7 +89,7 @@ jobs:
         with:
           service: ${{ env.SERVICE }}
           region: ${{ env.REGION }}
-          source: ./
+          source: ./cloud-run-jvm
 
       - name: Show Output
         run: echo ${{ steps.deploy.outputs.url }}
